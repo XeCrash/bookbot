@@ -15,10 +15,10 @@ def get_each_char_count(book_text: str, isalpha_filter = False):
 
     Args:
         book_text (str): the book object's text
-        isalpha_filter (bool): ability to filter for only .isalpha() characters 
+        isalpha_filter (bool): ability to filter for only .isalpha() characters | Default: False
         
     Return:
-        char_count (dict): A new dict containing counts for all referenced characters, symbols, and spaces
+        char_count {dict}: A new dict containing counts for all referenced characters, symbols, and spaces or just aplaha chars
     """
     char_count = {}
     lower_case_text = book_text.lower()
@@ -36,10 +36,10 @@ def get_each_char_count(book_text: str, isalpha_filter = False):
     return char_count  
 
 def sort_chars_to_list(chars: dict):
-    """_summary_
+    """converts the chars argument dictionary to a new generated list | dict{key: val} -> list[tuple] |
 
     Args:
-        chars (dict): _description_
+        chars{dict}: _description_
 
     Returns:
         list[tuple]: _description_

@@ -2,6 +2,7 @@ import sys
 from stats import get_num_words
 from stats import get_each_char_count
 from stats import sort_chars_to_list
+import stats
 
 def get_book_text(book: object):
     """
@@ -9,10 +10,18 @@ def get_book_text(book: object):
     :param book: The book object
     :return: The text of the book
     """
-    with open(book, 'r') as file:
-        book_contents = file.read()
-    # Assuming the book object has a text attribute
-
+    try:
+        with open(book, 'r') as file:
+            book_contents = file.read()
+    except FileNotFoundError:
+        print(f"PATH: \"{book}\" is not found at the specified path!\n\n", file=sys.stderr)
+        return
+    except PermissionError:
+        print(f"Insufficient permission to read {book}!", file=sys.stderr)
+        return
+    except IsADirectoryError:
+        print(f"{book} is a directory!", file=sys.stderr)
+        return
     return book_contents
 
 def main():
